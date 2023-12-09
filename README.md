@@ -1,10 +1,11 @@
-# THE SNOWBALL GAME 
+# The Snowball Game
 
-# Initial Ideas
+---
+## Initial Ideas
 
 To fight against the problem of scope-creep the project will be completed in stages
 
-## Stage 1 - Working game (Free for all mode)
+### Stage 1 - Working game (Free for all mode)
 - Timed mode
 - 3d game, fixed isometric camera
 - 2-8 players; 8 direction movement, can roll/ interact with snowballs
@@ -21,7 +22,7 @@ To fight against the problem of scope-creep the project will be completed in sta
     - Percentage based points, more bonus points for bigger snowmen
 - When three snowballs have been added together to create one Snowman, The model has carrot, hat, eyes, buttons etc. added to it and it is then fixed as an entity
 
-### Further Targets
+#### Further Targets
 - Snowballs have lower velocity depending on how large they are
 - Win Screen
   - With Statistics?
@@ -32,14 +33,14 @@ To fight against the problem of scope-creep the project will be completed in sta
 
 At this point, the game is a finished product, now to add more modes and features!
 
-## Stage 2 - Teams mode
+### Stage 2 - Teams mode
 - Timed mode
 - Two teams
   - Players from the same team can add to that Team's snowmen
   - Players from the same team cannot be hit by their team's snowballs
     - Friendly fire toggle
 
-### PvP
+#### PvP
 - Throwing snowballs, different from the rolled snowballs
   - Press a button to pick up a throwable snowball
 - Can kick snowballs away
@@ -51,7 +52,7 @@ At this point, the game is a finished product, now to add more modes and feature
 
 <br>
 
-## Stage 3 - Snowfall mode
+### Stage 3 - Snowfall mode
 - Falling snow
 - Points goal
 - Snow replenishes on the ground as the game goes on
