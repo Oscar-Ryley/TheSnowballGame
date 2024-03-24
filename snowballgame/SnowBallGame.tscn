@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddjd6rgv7be3b"]
+[gd_scene load_steps=9 format=3 uid="uid://ddjd6rgv7be3b"]
 
-[ext_resource type="PackedScene" uid="uid://c75m8pe6yq1vp" path="res://snowball.tscn" id="1_mm0pj"]
+[ext_resource type="PackedScene" uid="uid://c75m8pe6yq1vp" path="res://snowball/snowball.tscn" id="1_1bseg"]
+[ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sdgbj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -14,6 +15,8 @@ background_mode = 2
 sky = SubResource("Sky_sqer3")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bpg8u"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_onydm"]
 size = Vector2(10, 10)
@@ -31,12 +34,12 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 12.2673, 8.70986, 0.000511818)
-projection = 1
-size = 3.62077
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 12.7524, 8.99023, 0.92567)
+size = 10.0784
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(0.999617, -0.0275917, -0.00217588, 0.0276771, 0.996166, 0.0829868, -0.000122214, -0.0830152, 0.996548, 0, 0, 0)
+transform = Transform3D(0.983991, 0.178218, 1.86265e-09, -0.176271, 0.973241, 0.147412, 0.0262716, -0.145052, 0.989075, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_bpg8u")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_onydm")
@@ -45,8 +48,11 @@ mesh = SubResource("PlaneMesh_onydm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_gdbe3")
 
-[node name="RigidBody3D" parent="." instance=ExtResource("1_mm0pj")]
+[node name="RigidBody3D" parent="." instance=ExtResource("1_1bseg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0748241, 0.911726, -0.143782)
 
-[node name="RigidBody3D2" parent="." instance=ExtResource("1_mm0pj")]
+[node name="RigidBody3D2" parent="." instance=ExtResource("1_1bseg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.249907, 0.400366, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_po4o3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.01056, 2.15457)

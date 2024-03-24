@@ -8,7 +8,7 @@ To fight against the problem of scope-creep the project will be completed in sta
 ### Stage 1 - Working game (Free for all mode)
 - [ ] Timed mode
 - [ ] 3d game, fixed isometric camera
-- [ ] 2-8 players; 8 direction movement, can roll/ interact with snowballs
+- [ ] 2-8 players; 8 direction movement, can roll / interact with snowballs
 - [ ] Snowballs can be started and then roll along, picking up snow on the ground as they go
 - [ ] Snow on the ground interacts with snowball and disappears
 - [ ] Snowballs can be placed as the start of a snowman

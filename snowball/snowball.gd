@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var displacement: int = linear_velocity.length() * delta
+	var _displacement: int = linear_velocity.length() * delta
 	
 	
 	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c75m8pe6yq1vp"]
 
-[ext_resource type="Script" path="res://snowball.gd" id="1_5544c"]
+[ext_resource type="Script" path="res://snowball/snowball.gd" id="1_5544c"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_tl8cv"]
 radius = 0.25
