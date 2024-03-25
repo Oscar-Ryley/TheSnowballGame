@@ -10,6 +10,7 @@ height = 0.5
 radius = 0.25
 
 [node name="RigidBody3D" type="RigidBody3D"]
+mass = 0.5
 script = ExtResource("1_5544c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
