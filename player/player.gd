@@ -13,9 +13,14 @@ var facing = Vector3.FORWARD
 @onready
 var direction_ball = $DirectionBall
 
-func _process(delta):
+@onready
+var area = $SnowballArea3D
+
+func _process(_delta):
 	if Input.is_action_just_pressed("player_spawn_snowball"):
 		spawn_snowball()
+	
+	
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -23,8 +28,15 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("player_jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("player_jump") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("player_jump"):
+		print("snowball")
+		var snowballs = area.get_overlapping_bodies()
+		
+		for snowball in snowballs:
+			print(snowball)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -40,8 +52,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	direction_ball.position = 1.5 * facing
+	area.position = 1.5 * facing
+	
 
 func spawn_snowball():
 	var snowball = snowball_scene.instantiate()
-	get_parent().add_child(snowball)
 	snowball.position = global_position + 1.5 * facing
+	get_parent().add_child(snowball)

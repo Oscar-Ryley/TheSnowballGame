@@ -7,9 +7,11 @@ radius = 0.25
 height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u4m10"]
+resource_name = "spherelmao"
 radius = 0.25
 
 [node name="RigidBody3D" type="RigidBody3D"]
+collision_mask = 7
 mass = 0.5
 script = ExtResource("1_5544c")
 
