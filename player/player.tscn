@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://vti2nilc1jyc"]
+[gd_scene load_steps=5 format=3 uid="uid://vti2nilc1jyc"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_xw4q1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8h6ju"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e4ylq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f3j14"]
+radius = 0.25
+height = 0.5
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_xw4q1")
@@ -15,3 +19,7 @@ shape = SubResource("CapsuleShape3D_8h6ju")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_e4ylq")
 skeleton = NodePath("")
+
+[node name="DirectionBall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+mesh = SubResource("SphereMesh_f3j14")

@@ -34,7 +34,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 7.57103e-08, -4.37114e-08, 0, 0.5, 0.866025, 8.74228e-08, 0.866025, -0.5, 0.105384, 11.0277, -5.23047)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 11, 5)
 fov = 84.375
 size = 10.0784
 
@@ -56,4 +56,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44752, 0.623275, -0.347123
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.249907, 0.400366, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_po4o3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.134647, 1.68354, 2.44844)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134647, 1.68354, -3.89372)
