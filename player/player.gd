@@ -20,7 +20,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("player_spawn_snowball"):
 		spawn_snowball()
 	
-	
 
 func _physics_process(delta):
 	# Add the gravity.

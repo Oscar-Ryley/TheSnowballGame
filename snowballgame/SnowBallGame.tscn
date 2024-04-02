@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddjd6rgv7be3b"]
+[gd_scene load_steps=10 format=3 uid="uid://ddjd6rgv7be3b"]
 
 [ext_resource type="PackedScene" uid="uid://c75m8pe6yq1vp" path="res://snowball/snowball.tscn" id="1_1bseg"]
+[ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sdgbj"]
@@ -25,6 +26,7 @@ size = Vector2(10, 10)
 size = Vector3(10, 0.1, 10)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_vf6vn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_unlpa")
@@ -38,6 +40,15 @@ transform = Transform3D(1, 0, 0, 0, 0.642333, 0.766426, 0, -0.766426, 0.642333, 
 fov = 84.375
 size = 10.0784
 
+[node name="RigidBody3D" parent="." instance=ExtResource("1_1bseg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44752, 0.623275, -0.347123)
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("1_1bseg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.249907, 0.400366, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_po4o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134647, 1.68354, -3.89372)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 collision_layer = 4
@@ -50,12 +61,3 @@ mesh = SubResource("PlaneMesh_onydm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_gdbe3")
-
-[node name="RigidBody3D" parent="." instance=ExtResource("1_1bseg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44752, 0.623275, -0.347123)
-
-[node name="RigidBody3D2" parent="." instance=ExtResource("1_1bseg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.249907, 0.400366, 0)
-
-[node name="Player" parent="." instance=ExtResource("2_po4o3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134647, 1.68354, -3.89372)
