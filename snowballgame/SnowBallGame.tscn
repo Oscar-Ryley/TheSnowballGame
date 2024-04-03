@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddjd6rgv7be3b"]
+[gd_scene load_steps=14 format=3 uid="uid://ddjd6rgv7be3b"]
 
 [ext_resource type="PackedScene" uid="uid://c75m8pe6yq1vp" path="res://snowball/snowball.tscn" id="1_1bseg"]
 [ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
+[ext_resource type="Texture2D" uid="uid://byopdfd76rwu2" path="res://snowballgame/Snow Floor Texture/snow_03_diff_4k.png" id="4_jo757"]
+[ext_resource type="Texture2D" uid="uid://dj77jaw00d21p" path="res://snowballgame/Snow Floor Texture/snow_03_nor_gl_4k.png" id="5_dygaj"]
+[ext_resource type="Texture2D" uid="uid://hq4ouhmwipuq" path="res://snowballgame/Snow Floor Texture/snow_03_rough_4k.png" id="6_e1y44"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sdgbj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,7 +22,15 @@ glow_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bpg8u"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iublo"]
+albedo_texture = ExtResource("4_jo757")
+roughness_texture = ExtResource("6_e1y44")
+normal_enabled = true
+normal_texture = ExtResource("5_dygaj")
+uv1_scale = Vector3(100, 100, 100)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_onydm"]
+material = SubResource("StandardMaterial3D_iublo")
 size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gdbe3"]
