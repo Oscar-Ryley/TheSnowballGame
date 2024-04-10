@@ -1,6 +1,5 @@
 [gd_scene load_steps=14 format=3 uid="uid://ddjd6rgv7be3b"]
 
-[ext_resource type="PackedScene" uid="uid://c75m8pe6yq1vp" path="res://snowball/snowball.tscn" id="1_1bseg"]
 [ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
 [ext_resource type="Texture2D" uid="uid://byopdfd76rwu2" path="res://snowballgame/Snow Floor Texture/snow_03_diff_4k.png" id="4_jo757"]
@@ -36,6 +35,9 @@ size = Vector2(10, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gdbe3"]
 size = Vector3(10, 0.1, 10)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmgap"]
+size = Vector3(59.4972, 19.2322, 1)
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_vf6vn")
 
@@ -47,28 +49,40 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.642333, 0.766426, 0, -0.766426, 0.642333, 0, 10.5406, 6.84507)
-fov = 84.375
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 13.8424, 1.81407)
+fov = 60.0
 size = 10.0784
-
-[node name="RigidBody3D" parent="." instance=ExtResource("1_1bseg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44752, 0.623275, -0.347123)
-
-[node name="RigidBody3D2" parent="." instance=ExtResource("1_1bseg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.249907, 0.400366, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_po4o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134647, 1.68354, -3.89372)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Plane StaticBody" type="StaticBody3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 collision_layer = 4
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_bpg8u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane StaticBody"]
 mesh = SubResource("PlaneMesh_onydm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane StaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_gdbe3")
+
+[node name="World Border" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0901794, -0.074585, 6.80252)
+shape = SubResource("BoxShape3D_wmgap")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World Border"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8458, -0.074585, -9.60018)
+shape = SubResource("BoxShape3D_wmgap")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World Border"]
+transform = Transform3D(-0.1114, 0, 0.993776, 0, 1, 0, -0.993776, 0, -0.1114, -13.5709, -0.074585, -2.97908)
+shape = SubResource("BoxShape3D_wmgap")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World Border"]
+transform = Transform3D(0.122164, 0, 0.99251, 0, 1, 0, -0.99251, 0, 0.122164, 14.3618, -0.074585, -2.97908)
+shape = SubResource("BoxShape3D_wmgap")

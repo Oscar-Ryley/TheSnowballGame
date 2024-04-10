@@ -7,7 +7,7 @@
 resource_name = "spherelmao"
 radius = 0.25
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="Snowball" type="RigidBody3D"]
 collision_mask = 7
 mass = 0.5
 script = ExtResource("1_5544c")
@@ -15,5 +15,5 @@ script = ExtResource("1_5544c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_u4m10")
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_lmukp")]
+[node name="Snowball Model Scene" parent="." instance=ExtResource("2_lmukp")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.27932, 0)
