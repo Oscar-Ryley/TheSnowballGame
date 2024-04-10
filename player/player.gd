@@ -19,6 +19,7 @@ var area = $SnowballArea3D
 func _process(_delta):
 	if Input.is_action_just_pressed("player_spawn_snowball"):
 		spawn_snowball()
+		Global.team1points += 1
 	
 
 func _physics_process(delta):
@@ -29,13 +30,6 @@ func _physics_process(delta):
 	# Handle jump.
 	#if Input.is_action_just_pressed("player_jump") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
-		
-	if Input.is_action_just_pressed("player_jump"):
-		print("snowball")
-		var snowballs = area.get_overlapping_bodies()
-		
-		for snowball in snowballs:
-			print(snowball)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

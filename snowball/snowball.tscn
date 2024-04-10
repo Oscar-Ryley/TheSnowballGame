@@ -9,7 +9,6 @@ radius = 0.25
 
 [node name="Snowball" type="RigidBody3D"]
 collision_mask = 7
-mass = 0.5
 script = ExtResource("1_5544c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
