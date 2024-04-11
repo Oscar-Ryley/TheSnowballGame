@@ -17,9 +17,9 @@ var direction_ball = $DirectionBall
 var area = $SnowballArea3D
 
 func _process(_delta):
-	if Input.is_action_just_pressed("player_spawn_snowball"):
+	if Input.is_action_just_pressed("player2_spawn_snowball"):
 		spawn_snowball()
-		Global.team1points += 1
+		Global.team2points += 1
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -32,7 +32,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("player_left", "player_right", "player_up", "player_down")
+	var input_dir = Input.get_vector("player2_left", "player2_right", "player2_up", "player2_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		facing = direction

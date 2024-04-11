@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddjd6rgv7be3b"]
+[gd_scene load_steps=20 format=3 uid="uid://ddjd6rgv7be3b"]
 
 [ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dj77jaw00d21p" path="res://snowballgame/Snow Floor Texture/snow_03_nor_gl_4k.png" id="5_dygaj"]
 [ext_resource type="Script" path="res://snowballgame/Team1 - points.gd" id="6_6kxvt"]
 [ext_resource type="Texture2D" uid="uid://hq4ouhmwipuq" path="res://snowballgame/Snow Floor Texture/snow_03_rough_4k.png" id="6_e1y44"]
+[ext_resource type="Script" path="res://player/player2.gd" id="6_eqhvx"]
 [ext_resource type="Script" path="res://snowballgame/Team2 - points.gd" id="7_1vrwo"]
 [ext_resource type="Texture2D" uid="uid://d0t63raqg5y2l" path="res://assets/transparent-black.png" id="8_pwson"]
 
@@ -96,6 +97,10 @@ shape = SubResource("BoxShape3D_gdbe3")
 [node name="Player" parent="." instance=ExtResource("2_po4o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134647, 1.68354, -3.89372)
 
+[node name="Player2" parent="." instance=ExtResource("2_po4o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32914, 1.68354, -3.89372)
+script = ExtResource("6_eqhvx")
+
 [node name="Scores HUD" type="Node2D" parent="."]
 
 [node name="Team 1" type="Label" parent="Scores HUD"]
@@ -108,6 +113,7 @@ theme_override_colors/font_color = Color(1, 0.141176, 0.152941, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Team 1"
+metadata/_edit_use_anchors_ = true
 
 [node name="Team1 - points" type="RichTextLabel" parent="Scores HUD/Team 1"]
 layout_mode = 0
@@ -120,6 +126,7 @@ theme_override_colors/default_color = Color(1, 0.141176, 0.152941, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 script = ExtResource("6_6kxvt")
+metadata/_edit_use_anchors_ = true
 
 [node name="Team 2" type="Label" parent="Scores HUD"]
 offset_left = 12.0
@@ -131,6 +138,7 @@ theme_override_colors/font_color = Color(0.215686, 0.454902, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Team 2"
+metadata/_edit_use_anchors_ = true
 
 [node name="Team2 - points" type="RichTextLabel" parent="Scores HUD/Team 2"]
 layout_mode = 0
@@ -143,6 +151,7 @@ theme_override_colors/default_color = Color(0.215686, 0.454902, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 script = ExtResource("7_1vrwo")
+metadata/_edit_use_anchors_ = true
 
 [node name="Transparent Background" type="Sprite2D" parent="Scores HUD"]
 z_index = -1
