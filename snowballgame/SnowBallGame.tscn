@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddjd6rgv7be3b"]
+[gd_scene load_steps=24 format=3 uid="uid://ddjd6rgv7be3b"]
 
 [ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
@@ -41,6 +41,20 @@ size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gdbe3"]
 size = Vector3(10, 0.1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efu3h"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ehq65"]
+material = SubResource("StandardMaterial3D_efu3h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hywo5"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hq22x"]
+material = SubResource("StandardMaterial3D_hywo5")
 
 [sub_resource type="Theme" id="Theme_mtygm"]
 default_font_size = 20
@@ -94,12 +108,23 @@ mesh = SubResource("PlaneMesh_onydm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_gdbe3")
 
-[node name="Player" parent="." instance=ExtResource("2_po4o3")]
+[node name="Player1" parent="." instance=ExtResource("2_po4o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134647, 1.68354, -3.89372)
+
+[node name="Red outline" type="MeshInstance3D" parent="Player1"]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, -0.863478, -0.00100228)
+transparency = 0.6
+mesh = SubResource("CylinderMesh_ehq65")
 
 [node name="Player2" parent="." instance=ExtResource("2_po4o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32914, 1.68354, -3.89372)
 script = ExtResource("6_eqhvx")
+
+[node name="Blue outline" type="MeshInstance3D" parent="Player2"]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, -0.863478, -0.00100228)
+transparency = 0.6
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_hq22x")
 
 [node name="Scores HUD" type="Node2D" parent="."]
 
