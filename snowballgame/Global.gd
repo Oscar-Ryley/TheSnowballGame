@@ -1,4 +1,7 @@
+class_name Globals
 extends Node3D
+
+enum TEAM {RED, BLUE, UNASSIGNED}
 
 @onready var team1points = 0
 @onready var team2points = 0

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm2ojtybbxw3v"]
+
+[ext_resource type="Material" uid="uid://b3bqt0asbodq2" path="res://materials/red_player_material.tres" id="1_sgn57"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ehq65"]
+material = ExtResource("1_sgn57")
+
+[node name="Red outline" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, -0.863478, -0.00100228)
+transparency = 0.6
+mesh = SubResource("CylinderMesh_ehq65")

@@ -10,16 +10,51 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var facing = Vector3.FORWARD
 
+@export
+var team: Globals.TEAM = Globals.TEAM.UNASSIGNED
+
 @onready
 var direction_ball = $DirectionBall
 
 @onready
 var area = $SnowballArea3D
 
+class Controls:
+	var LEFT: String
+	var RIGHT: String
+	var UP: String 
+	var DOWN: String 
+	var SPAWN_SNOWBALL: String
+	
+	func _init(team: Globals.TEAM):
+		var team_str: String = Globals.TEAM.keys()[team]
+		LEFT = str(team_str, "_player_left")
+		print(LEFT)
+		RIGHT = str(team_str, "_player_right")
+		UP = str(team_str, "_player_up")
+		DOWN = str(team_str, "_player_down")
+		SPAWN_SNOWBALL = str(team_str, "_player_spawn_snowball")
+	
+	func get_input_vector() -> Vector2:
+		return Input.get_vector(LEFT, RIGHT, UP, DOWN)
+
+var player_controls: Controls
+
+func _ready():
+	var outline: MeshInstance3D
+	
+	if (team == Globals.TEAM.RED):
+		outline = load("res://player/outlines/red_outline.tscn").instantiate()
+	elif (team == Globals.TEAM.BLUE):
+		outline = load("res://player/outlines/blue_outline.tscn").instantiate()
+	
+	add_child(outline)
+	
+	player_controls = Controls.new(team)
+
 func _process(_delta):
-	if Input.is_action_just_pressed("player_spawn_snowball"):
+	if Input.is_action_just_pressed(player_controls.SPAWN_SNOWBALL):
 		spawn_snowball()
-		Global.team1points += 1
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -32,7 +67,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("player_left", "player_right", "player_up", "player_down")
+	var input_dir = player_controls.get_input_vector()
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		facing = direction
@@ -48,6 +83,7 @@ func _physics_process(delta):
 	
 
 func spawn_snowball():
-	var snowball = snowball_scene.instantiate()
+	var snowball = Snowball.new_snowball(team)
+	#var snowball = snowball_scene.instantiate()
 	snowball.position = global_position + 1.5 * facing
 	get_parent().add_child(snowball)
