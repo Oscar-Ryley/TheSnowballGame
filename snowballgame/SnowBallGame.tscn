@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddjd6rgv7be3b"]
+[gd_scene load_steps=24 format=3 uid="uid://ddjd6rgv7be3b"]
 
 [ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://hq4ouhmwipuq" path="res://snowballgame/Snow Floor Texture/snow_03_rough_4k.png" id="6_e1y44"]
 [ext_resource type="Script" path="res://snowballgame/Team2 - points.gd" id="7_1vrwo"]
 [ext_resource type="Texture2D" uid="uid://d0t63raqg5y2l" path="res://assets/transparent-black.png" id="8_pwson"]
+[ext_resource type="Script" path="res://snowballgame/Game Timer.gd" id="9_kb7rv"]
+[ext_resource type="Texture2D" uid="uid://j0lt605cg5uj" path="res://assets/Win Screens/Tie.png" id="10_cjxqb"]
+[ext_resource type="Script" path="res://snowballgame/End Screens.gd" id="10_jea2k"]
+[ext_resource type="Texture2D" uid="uid://bglwswjxf5khe" path="res://assets/Win Screens/Red Team Wins.png" id="11_4ky4x"]
+[ext_resource type="Texture2D" uid="uid://bsmur3bgypyc4" path="res://assets/Win Screens/Blue Team Wins.png" id="12_quwnl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sdgbj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -102,9 +107,11 @@ team = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.329, 1.684, -3.894)
 team = 1
 
-[node name="Scores HUD" type="Node2D" parent="."]
+[node name="HUD" type="Node2D" parent="."]
 
-[node name="Team 1" type="Label" parent="Scores HUD"]
+[node name="Scores" type="Node2D" parent="HUD"]
+
+[node name="Team 1" type="Label" parent="HUD/Scores"]
 offset_left = 12.0
 offset_top = 8.0
 offset_right = 91.0
@@ -116,7 +123,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Team 1"
 metadata/_edit_use_anchors_ = true
 
-[node name="Team1 - points" type="RichTextLabel" parent="Scores HUD/Team 1"]
+[node name="Team1 - points" type="RichTextLabel" parent="HUD/Scores/Team 1"]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 1.0
@@ -129,7 +136,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 script = ExtResource("6_6kxvt")
 metadata/_edit_use_anchors_ = true
 
-[node name="Team 2" type="Label" parent="Scores HUD"]
+[node name="Team 2" type="Label" parent="HUD/Scores"]
 offset_left = 12.0
 offset_top = 54.0
 offset_right = 91.0
@@ -141,7 +148,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Team 2"
 metadata/_edit_use_anchors_ = true
 
-[node name="Team2 - points" type="RichTextLabel" parent="Scores HUD/Team 2"]
+[node name="Team2 - points" type="RichTextLabel" parent="HUD/Scores/Team 2"]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 1.0
@@ -154,8 +161,49 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 script = ExtResource("7_1vrwo")
 metadata/_edit_use_anchors_ = true
 
-[node name="Transparent Background" type="Sprite2D" parent="Scores HUD"]
+[node name="Transparent Background" type="Sprite2D" parent="HUD/Scores"]
 z_index = -1
 position = Vector2(43, -23)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_pwson")
+
+[node name="Game Timer" type="Node2D" parent="HUD"]
+script = ExtResource("9_kb7rv")
+
+[node name="Label" type="Label" parent="HUD/Game Timer"]
+offset_left = 195.0
+offset_top = 11.0
+offset_right = 235.0
+offset_bottom = 34.0
+
+[node name="Timer" type="Timer" parent="HUD/Game Timer"]
+wait_time = 60.0
+one_shot = true
+
+[node name="Transparent Background2" type="Sprite2D" parent="HUD/Game Timer"]
+z_index = -1
+position = Vector2(204.5, -80)
+scale = Vector2(0.059, 0.25)
+texture = ExtResource("8_pwson")
+
+[node name="End Screens" type="Node2D" parent="HUD"]
+script = ExtResource("10_jea2k")
+
+[node name="Tie Screen" type="Sprite2D" parent="HUD/End Screens"]
+visible = false
+position = Vector2(559, 321)
+texture = ExtResource("10_cjxqb")
+
+[node name="Red Win Screen" type="Sprite2D" parent="HUD/End Screens"]
+visible = false
+position = Vector2(567, 327)
+scale = Vector2(0.693519, 0.693519)
+texture = ExtResource("11_4ky4x")
+
+[node name="Blue Win Screen" type="Sprite2D" parent="HUD/End Screens"]
+visible = false
+position = Vector2(566, 331)
+scale = Vector2(0.627778, 0.627778)
+texture = ExtResource("12_quwnl")
+
+[connection signal="timeout" from="HUD/Game Timer/Timer" to="HUD/End Screens" method="_on_timer_timeout"]
