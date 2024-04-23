@@ -6,4 +6,4 @@
 ## Player2 Controls
 
 - Move: Arrow Keys
-- Create Snowball: Numpad 1
+- Create Snowball: Shift

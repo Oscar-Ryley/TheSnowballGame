@@ -3,7 +3,9 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const snowball_scene: Resource = preload("res://snowball/snowball_red.tscn")
+# Still need to preload the Snowball Scenes, else the loading of the scene slows down the game.
+const snowball_red: Resource = preload("res://snowball/snowball_red.tscn")
+const snowball_blue: Resource = preload("res://snowball/snowball_blue.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -11,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var facing = Vector3.FORWARD
 
 @export
-var team: Globals.TEAM = Globals.TEAM.UNASSIGNED
+var team: Global.TEAM = Global.TEAM.UNASSIGNED
 
 @onready
 var direction_ball = $DirectionBall
@@ -26,10 +28,9 @@ class Controls:
 	var DOWN: String 
 	var SPAWN_SNOWBALL: String
 	
-	func _init(team: Globals.TEAM):
-		var team_str: String = Globals.TEAM.keys()[team]
+	func _init(team: Global.TEAM):
+		var team_str: String = Global.TEAM.keys()[team]
 		LEFT = str(team_str, "_player_left")
-		print(LEFT)
 		RIGHT = str(team_str, "_player_right")
 		UP = str(team_str, "_player_up")
 		DOWN = str(team_str, "_player_down")
@@ -43,9 +44,9 @@ var player_controls: Controls
 func _ready():
 	var outline: MeshInstance3D
 	
-	if (team == Globals.TEAM.RED):
+	if (team == Global.TEAM.RED):
 		outline = load("res://player/outlines/red_outline.tscn").instantiate()
-	elif (team == Globals.TEAM.BLUE):
+	elif (team == Global.TEAM.BLUE):
 		outline = load("res://player/outlines/blue_outline.tscn").instantiate()
 	
 	add_child(outline)
@@ -85,5 +86,5 @@ func _physics_process(delta):
 func spawn_snowball():
 	var snowball = Snowball.new_snowball(team)
 	#var snowball = snowball_scene.instantiate()
-	snowball.position = global_position + 1.5 * facing
+	snowball.position = global_position + 1 * facing
 	get_parent().add_child(snowball)
