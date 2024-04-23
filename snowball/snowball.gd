@@ -1,13 +1,15 @@
 class_name Snowball
 extends RigidBody3D
 
-const GROWTH_CONSTANT: float = 0.0005
+const GROWTH_CONSTANT: float = 0.001
 const MAXIMUM_SIZE: float = 7.0
 
 @onready var model_pivot: Node3D = $"Model Pivot"
 @onready var collision_shape: CollisionShape3D = $"CollisionShape3D"
 
-var team: Global.TEAM
+@export var team: Global.TEAM
+const start_scale: Vector3 = 0.75 * Vector3.ONE
+var child_scale: Vector3
 
 #const red_snowball_scene = preload("res://snowball/snowball_red.tscn")
 #const blue_snowball_scene = preload("res://snowball/snowball_blue.tscn")
@@ -29,17 +31,24 @@ static func new_snowball(player_team: Global.TEAM) -> Snowball:
 	return new_snowball_obj
 
 func _ready():
-	model_pivot.scale = 0.75 * Vector3.ONE
-	collision_shape.scale = 0.75 * Vector3.ONE
+	child_scale = start_scale
+	model_pivot.scale = child_scale
+	collision_shape.scale = child_scale
 
 func _physics_process(_delta):
-	var speed: float = linear_velocity.length()
+	var horizontal_velocity: Vector2 = Vector2(linear_velocity.x, linear_velocity.z)
+	var speed: float = horizontal_velocity.length()
 	if speed > 0:
 		var change: float = GROWTH_CONSTANT * speed
 		increment_children_scale(change)
 
 func increment_children_scale(change):
+	#child_scale = Vector3(1, 1, 1)
 	if model_pivot.scale.length() < MAXIMUM_SIZE and collision_shape.scale.length() < MAXIMUM_SIZE:
-		var new_scale_vec: Vector3 = change * Vector3.ONE
-		model_pivot.scale += new_scale_vec
-		collision_shape.scale += new_scale_vec
+		var change_scale_vec: Vector3 = change * Vector3.ONE
+		child_scale += change_scale_vec
+		model_pivot.scale = child_scale
+		collision_shape.scale = child_scale
+
+func get_team() -> Globals.TEAM:
+	return team

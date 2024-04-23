@@ -10,9 +10,9 @@ func ready(_delta):
 	blue.visible = false
 
 func _on_timer_timeout():
-	if Global.team1points > Global.team2points:
+	if SnowballGame.team_red_points > SnowballGame.team_blue_points:
 		red.visible = true
-	elif Global.team2points > Global.team1points:
+	elif SnowballGame.team_blue_points > SnowballGame.team_red_points:
 		blue.visible = true
-	elif Global.team1points == Global.team2points:
+	elif SnowballGame.team_red_points == SnowballGame.team_blue_points:
 		tie.visible = true

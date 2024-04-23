@@ -8,9 +8,9 @@ func _ready():
 
 func time():
 	var time_left = timer.time_left
-	var minute = floor(time_left / 60)
+	#var minute = floor(time_left / 60)
 	var second = int(time_left) % 60
 	return [second]
 
-func _process(delta):
+func _process(_delta):
 	label.text = "%02d" % time()

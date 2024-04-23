@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://ddjd6rgv7be3b"]
 
-[ext_resource type="Script" path="res://snowballgame/Global.gd" id="1_vf6vn"]
+[ext_resource type="Script" path="res://snowballgame/SnowBallGame.gd" id="1_t86sh"]
 [ext_resource type="PackedScene" uid="uid://vti2nilc1jyc" path="res://player/player.tscn" id="2_po4o3"]
 [ext_resource type="Texture2D" uid="uid://byopdfd76rwu2" path="res://snowballgame/Snow Floor Texture/snow_03_diff_4k.png" id="4_jo757"]
 [ext_resource type="Texture2D" uid="uid://dj77jaw00d21p" path="res://snowballgame/Snow Floor Texture/snow_03_nor_gl_4k.png" id="5_dygaj"]
@@ -52,8 +52,8 @@ default_font_size = 20
 [sub_resource type="Theme" id="Theme_ff73x"]
 default_font_size = 20
 
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_vf6vn")
+[node name="Root" type="Node3D"]
+script = ExtResource("1_t86sh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_unlpa")

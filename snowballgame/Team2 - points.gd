@@ -1,4 +1,4 @@
 extends RichTextLabel
 
-func _process(delta):
-	self.text = str(Global.team2points)
+func _process(_delta):
+	self.text = str(round(SnowballGame.team_blue_points))

@@ -3,14 +3,27 @@ extends Node3D
 
 enum TEAM {RED, BLUE, UNASSIGNED}
 
-@onready var team1points = 0
-@onready var team2points = 0
+#static var team_red_points = 0
+#static var team_blue_points = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+#@onready var team_red_points_hud: RichTextLabel = $"HUD/Scores/Team 1/Team1 - points"
+#@onready var team_blue_points_hud: RichTextLabel = $"HUD/Scores/Team 2/Team2 - points"
 
+#func _process(_delta):
+	#print($Player1)
+	#for child in $"Root".get_children():
+		#if child is Snowball:
+			#print("found snowball")
+	#print("end of search")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#static func add_points(points: float, team: TEAM):
+	#if team == TEAM.RED:
+		#team_red_points += points
+	#elif team == TEAM.BLUE:
+		#team_blue_points += points
+		#
+#static func set_points(points: float, team: TEAM):
+	#if team == TEAM.RED:
+		#team_red_points = points
+	#elif team == TEAM.BLUE:
+		#team_blue_points = points
