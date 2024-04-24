@@ -21,6 +21,11 @@ var direction_ball = $DirectionBall
 @onready
 var area = $SnowballArea3D
 
+@onready var bsnowball_active = true
+@onready var btimer = $Timer2
+@onready var rsnowball_active = true
+@onready var rtimer = $Timer1
+
 class Controls:
 	var LEFT: String
 	var RIGHT: String
@@ -84,7 +89,23 @@ func _physics_process(delta):
 	
 
 func spawn_snowball():
-	var snowball = Snowball.new_snowball(team)
-	#var snowball = snowball_scene.instantiate()
-	snowball.position = global_position + 1 * facing
-	get_parent().add_child(snowball)
+	if rsnowball_active == true and team == 0:
+		var snowball = Snowball.new_snowball(team)
+		snowball.position = global_position + 1 * facing
+		get_parent().add_child(snowball)
+		rsnowball_active = false
+		rtimer.start()
+	if bsnowball_active == true and team == 1:
+		var snowball = Snowball.new_snowball(team)
+		snowball.position = global_position + 1 * facing
+		get_parent().add_child(snowball)
+		bsnowball_active = false
+		btimer.start()
+
+
+func _on_timer_2_timeout():
+	bsnowball_active = true
+
+
+func _on_timer_1_timeout():
+	rsnowball_active = true

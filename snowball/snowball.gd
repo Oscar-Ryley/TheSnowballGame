@@ -2,7 +2,7 @@ class_name Snowball
 extends RigidBody3D
 
 const GROWTH_CONSTANT: float = 0.001
-const MAXIMUM_SIZE: float = 7.0
+const MAXIMUM_SIZE: float = 9.25
 
 @onready var model_pivot: Node3D = $"Model Pivot"
 @onready var collision_shape: CollisionShape3D = $"CollisionShape3D"
