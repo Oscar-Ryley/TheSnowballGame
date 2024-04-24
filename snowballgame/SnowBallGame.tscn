@@ -124,7 +124,9 @@ text = "Team 1"
 metadata/_edit_use_anchors_ = true
 
 [node name="Team1 - points" type="RichTextLabel" parent="HUD/Scores/Team 1"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.202532
 offset_left = 98.0
 offset_top = 1.0
 offset_right = 138.0
@@ -149,7 +151,9 @@ text = "Team 2"
 metadata/_edit_use_anchors_ = true
 
 [node name="Team2 - points" type="RichTextLabel" parent="HUD/Scores/Team 2"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.202532
 offset_left = 98.0
 offset_top = 1.0
 offset_right = 138.0

@@ -3,6 +3,9 @@ extends Node3D
 
 enum TEAM {RED, BLUE, UNASSIGNED}
 
+@onready var r = 0
+@onready var b = 0
+
 #static var team_red_points = 0
 #static var team_blue_points = 0
 
