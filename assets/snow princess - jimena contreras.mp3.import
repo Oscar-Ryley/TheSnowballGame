@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dx0b56epl6u7v"
+path="res://.godot/imported/snow princess - jimena contreras.mp3-09c6479e35dc878b841099b2d8cf5d4b.mp3str"
+
+[deps]
+
+source_file="res://assets/snow princess - jimena contreras.mp3"
+dest_files=["res://.godot/imported/snow princess - jimena contreras.mp3-09c6479e35dc878b841099b2d8cf5d4b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
